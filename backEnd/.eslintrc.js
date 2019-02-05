@@ -1,10 +1,6 @@
 module.exports = {
-    "extends": "eslint:recommended",
-    "rules": {
-        "semi": ["error", "always"],
-        "quotes": ["error", "simple"]
-    },
-    "env": {
-        "es6": true
-    }
-};
+  'extends': 'standard',
+  'rules': {
+    'curly': 0
+  }
+}
