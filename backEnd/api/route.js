@@ -119,5 +119,6 @@ module.exports = function (app) {
 
   router.use('/users', require('./routes/userRoutes'))
   router.use('/categories', require('./routes/categoryRoutes'))
+  router.use('/deals', require('./routes/dealRoutes'))
 
 }

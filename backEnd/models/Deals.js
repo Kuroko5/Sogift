@@ -3,9 +3,24 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 // create a schema
-const categorySchema = new Schema({
-  name: {type: String, required: true},
-  description: {type: String},
+const dealsSchema = new Schema({
+  name: { type: String, required: true },
+  description: { type: String },
+  created_by: {
+    type: Schema.ObjectId,
+    ref: 'Users',
+  },
+  created_at: {
+    type: Date,
+    default: Date.now
+  },
+  deleted_by: {
+    type: Schema.ObjectId,
+    ref: 'Users'
+  },
+  deleted_at: {
+    type: Date
+  }
 }, {
   toJSON: {
     virtuals: true
@@ -15,13 +30,6 @@ const categorySchema = new Schema({
   }
 })
 
-categorySchema.virtual('skills', {
-  ref: 'Skills',
-  localField: '_id',
-  foreignField: 'skill_id'
-})
+const Deals = mongoose.model('Deals', dealsSchema)
 
-const Categories = mongoose.model('Categories', categorySchema)
-
-// make this available to our users in our Node applications
-module.exports = Categories
+module.exports = Deals

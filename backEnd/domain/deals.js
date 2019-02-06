@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const DEALS = mongoose.model('Deals')
 
-exports.createS = obj => DEALS.create(obj)
+exports.create = obj => DEALS.create(obj)
 
 exports.update = (_id, content) => DEALS.findOneAndUpdate({ _id }, content, { new: true }).exec()
 

@@ -21,7 +21,9 @@ const { genSaltSync, hashSync } = require('bcryptjs')
  */
 const User = require('./models/User'), // created model loading here
   Token = require('./models/Token'), // created model loading here
-  Category = require('./models/Category') // created model loading here
+  Category = require('./models/Category'),
+  Deal = require('./models/Deals') // created model loading here
+// created model loading here
 
 /**
  * Config passport auth
@@ -43,10 +45,12 @@ require('./test')(passport)
  * @type {[string]}
  */
 
-var whitelist = ['http://localhost:4200', 'http://localhost:4280']
-var corsOptions = {
+const whitelist = ['http://localhost', 'http://localhost:3000/api/', 'http://localhost:4200', 'http://localhost:4280']
+
+const corsOptions = {
   origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
+    console.log(`${origin}`, whitelist.indexOf(origin))
+    if (origin === undefined || whitelist.indexOf(origin) !== -1) {
       callback(null, true)
     } else {
       callback(new Error('Not allowed by CORS'))
@@ -56,8 +60,8 @@ var corsOptions = {
 console.log(corsOptions)
 app.use(cors(corsOptions))
 app.use(cookieParser())
-app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 app.use(session({
   secret: 'Sogift',
   resave: false,
