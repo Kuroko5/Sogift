@@ -23,7 +23,6 @@ const User = require('./models/User'), // created model loading here
   Token = require('./models/Token'), // created model loading here
   Category = require('./models/Category'),
   Deal = require('./models/Deals') // created model loading here
-// created model loading here
 
 /**
  * Config passport auth
@@ -45,7 +44,7 @@ require('./test')(passport)
  * @type {[string]}
  */
 
-const whitelist = ['http://localhost', 'http://localhost:3000/api/', 'http://localhost:4200', 'http://localhost:4280']
+const whitelist = ['http://localhost:4200', 'http://localhost:4280']
 
 const corsOptions = {
   origin: function (origin, callback) {
@@ -57,7 +56,7 @@ const corsOptions = {
     }
   }
 }
-console.log(corsOptions)
+
 app.use(cors(corsOptions))
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: true }))
