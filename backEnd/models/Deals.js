@@ -24,6 +24,10 @@ const dealsSchema = new Schema({
     type: Date,
     default: Date.now
   },
+  updated_at: {
+    type: Date,
+    default: Date.now
+  },
   deleted_by: {
     type: Schema.ObjectId,
     ref: 'Users'

@@ -14,6 +14,7 @@ import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 
 import { AuthenticationService } from './_services/authentication.service';
+import { UsersComponent } from './users/users.component';
 
 
 
@@ -22,6 +23,7 @@ import { AuthenticationService } from './_services/authentication.service';
     AppComponent,
     HomeComponent,
     LoginComponent,
+    UsersComponent,
   ],
   imports: [
     BrowserModule,

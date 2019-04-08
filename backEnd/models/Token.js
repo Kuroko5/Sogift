@@ -9,12 +9,9 @@ const tokenSchema = new Schema({
     ref: 'Users'
   },
   token: {
-    type: String,
-
+    type: String
   }
 })
-
-
 const Tokens = mongoose.model('Tokens', tokenSchema)
 
 module.exports = Tokens

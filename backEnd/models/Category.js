@@ -5,7 +5,7 @@ const Schema = mongoose.Schema
 // create a schema
 const categorySchema = new Schema({
   name: {type: String, required: true},
-  description: {type: String},
+  description: {type: String}
 }, {
   toJSON: {
     virtuals: true
@@ -13,12 +13,6 @@ const categorySchema = new Schema({
   toObject: {
     virtuals: true
   }
-})
-
-categorySchema.virtual('skills', {
-  ref: 'Skills',
-  localField: '_id',
-  foreignField: 'skill_id'
 })
 
 const Categories = mongoose.model('Categories', categorySchema)

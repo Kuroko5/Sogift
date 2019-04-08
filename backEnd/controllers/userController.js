@@ -30,21 +30,6 @@ exports.getUser = function (req, res) {
     .catch(err => res.status(500).send(err))
 }
 
-// get the user by skill
-/*
-exports.getUserBySkill = function (req, res) {
-  console.log(req.params)
-  UserDomain.bySkill(req.params.skill, req.params.level)
-    .then(user => {
-      res.status(200).json(user)
-      }
-    ).catch(err => {
-      console.log(err)
-    res.status(500).send(err)
-    })
-
-}*/
-
 // UPdate user by ID
 exports.updateUser = function (req, res) {
   UserDomain.update(req.params.id, req.body)

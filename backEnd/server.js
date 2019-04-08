@@ -2,13 +2,9 @@
  *  Libraries
  */
 const express = require('express');
-const formidable = require('express-formidable');
 const cors = require('cors');
 const app = express();
-const http = require('http');
-const util = require('util');
 const port = process.env.PORT || 3000
-const path = require('path')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
@@ -22,7 +18,8 @@ const { genSaltSync, hashSync } = require('bcryptjs')
 const User = require('./models/User'), // created model loading here
   Token = require('./models/Token'), // created model loading here
   Category = require('./models/Category'),
-  Deal = require('./models/Deals') // created model loading here
+  Deal = require('./models/Deals'), // created model loading here
+  Article = require('./models/Article') // created model loading here
 
 /**
  * Config passport auth
@@ -57,7 +54,7 @@ const corsOptions = {
   }
 }
 
-app.use(cors(corsOptions))
+app.use(cors('*')) // corsOptions
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())

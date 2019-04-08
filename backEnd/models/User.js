@@ -4,9 +4,9 @@ const Schema = mongoose.Schema
 
 // create a schema
 const userSchema = new Schema({
-  name: {type: String},
-  firstname: {type: String},
-  lastname: {type: String},
+  name: { type: String },
+  firstname: { type: String },
+  lastname: { type: String },
   email: {
     type: String,
     unique: true,
@@ -20,23 +20,24 @@ const userSchema = new Schema({
   },
   password: {
     type: String,
-    required:true
+    required: true
   },
   created_at: {
     type: Date,
     default: Date.now
   },
-  lastUpdate: {type: Date},
+  lastUpdate: { type: Date },
   role: {
     type: String,
     default: 'user'
   },
-  isDisabled:{
+  isDisabled: {
     type: Boolean,
-    default:false
+    default: false
   }
 
-}, {
+},
+{
   toJSON: {
     virtuals: true
   },

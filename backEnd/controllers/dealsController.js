@@ -15,7 +15,7 @@ exports.createDeal = function (req, res) {
 }
 
 exports.getDeal = function (req, res) {
-  DealDomain.one(req.params.id).then(deal => res.status(200).json(deal)).catch(err => res.status(500).send(err));
+  DealDomain.one(req.params.id).then(deal => res.status(200).json(deal)).catch(err => res.status(500).send(err))
 }
 
 // UPdate deal by ID
@@ -30,5 +30,5 @@ exports.deleteDeal = function (req, res) {
 
 // Delete by iD
 exports.deleteAllDeal = function (req, res) {
-  DealDomain.deleteAll(req.body).then(deal => res.status(200).json(deal)).catch(err => res.status(500).send(err));
+  DealDomain.deleteAll(req.body).then(deal => res.status(200).json(deal)).catch(err => res.status(500).send(err))
 }

@@ -5,7 +5,10 @@ import { first } from 'rxjs/operators';
 
 import { AuthenticationService } from '../_services/authentication.service';
 
-@Component({ templateUrl: 'login.component.html' })
+@Component({
+    templateUrl: 'login.component.html',
+    styleUrls: ['./login.component.css']
+})
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     loading = false;
@@ -48,7 +51,6 @@ export class LoginComponent implements OnInit {
         console.log('Email', this.f.email.value)
         console.log('pass', this.f.password.value)
         this.authenticationService.login(this.f.email.value, this.f.password.value)
-            .pipe(first())
             .subscribe(
                 data => {
                     this.router.navigate([this.returnUrl]);
