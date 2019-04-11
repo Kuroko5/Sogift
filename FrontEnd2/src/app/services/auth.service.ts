@@ -6,8 +6,8 @@ import { User } from '../interfaces/user';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private currentUserSubject: BehaviorSubject<User>;
-  public currentUser: Observable<User>;
+  private currentUserSubject: BehaviorSubject<any>;
+  public currentUser: Observable<any>;
 
   constructor(private http: HttpClient) {
 
@@ -21,25 +21,29 @@ export class AuthService {
     return this.currentUserSubject.value;
   }
 
-  login(email: string, password: string) {
+  async login(email: string, password: string) {
     console.log('In service')
-    const logged = this.http.post<any>(`http://localhost:3000/api/login`, { email, password }, ).pipe(map(user => {
+    return this.http.post<any>(`http://localhost:3000/api/login`, { email, password }, ).subscribe((user) => {
         console.log('in Login', user)
         // login successful if there's a jwt token in the response
         if (user && user.token) {
+          console.log('sotre token & usr')
           // store user details and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify(user));
+          localStorage.setItem('token', user.token);
+          console.log(localStorage.getItem('currentUser'))
+          console.log(localStorage.getItem('token'))
           this.currentUserSubject.next(user);
         }
 
         return user;
-      }));
-    console.log('Logged', logged)
+      });
   }
 
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('token');
     this.currentUserSubject.next(null);
   }
 }

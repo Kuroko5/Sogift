@@ -14,7 +14,7 @@ export class AuthGuard implements CanActivate {
 
   async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const currentUser = await this.authenticationService.currentUserValue;
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem('token');
     if (token) {
       // authorised so return true
       return true;

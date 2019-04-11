@@ -1,9 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
+import { MaterialModule } from './material.module';
+
 /**
  * Immport Modules
  */
@@ -21,6 +26,7 @@ import { LoginComponent } from './login/login.component';
 import { ArticlesService } from './services/articles.service';
 import { AuthGuard } from './_guard/auth.guard';
 import { HomeComponent } from './pages/home/home.component';
+import { SidenavbarComponent } from './component/sidenavbar/sidenavbar.component';
 
 
 @NgModule({
@@ -28,12 +34,17 @@ import { HomeComponent } from './pages/home/home.component';
     AppComponent,
     ArticlesComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    SidenavbarComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
+    FormsModule,
     HttpClientModule,
+    MaterialModule,
+    MatNativeDateModule,
     ReactiveFormsModule,
     SlimLoadingBarModule
   ],

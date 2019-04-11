@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
         console.log(data)
         this.articles = data;
       });
-    this.usersService.getAll().subscribe((result) => {
+    this.usersService.getAll().subscribe((result: any) => {
       console.log(result.data)
       this.users = result.data;
     });
