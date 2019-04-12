@@ -1,8 +1,6 @@
 // UserController.js
-const mongoose = require('mongoose'),
-  User = mongoose.model('Users'),
-  UserDomain = require('../domain/user'),
-  {paginate} = require('../service/paginate')
+const UserDomain = require('../domain/user')
+const { paginate } = require('../service/paginate')
 
 // RETURNS ALL THE USERS IN THE DATABASE
 exports.listUsers = function (req, res) {
@@ -44,7 +42,6 @@ exports.deleteUser = function (req, res) {
     .catch(err => res.status(500).send(err))
 }
 exports.deleteAllUser = function (req, res) {
-  console.log("list of id",req.body)
   UserDomain.deleteAll(req.body)
     .then(user => res.status(200).json(user))
     .catch(err => res.status(500).send(err))

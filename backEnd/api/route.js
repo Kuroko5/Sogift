@@ -22,21 +22,13 @@ module.exports = function (app) {
   /**
    * Function to logout the current user
    */
-  router.get('/logout', (req, res) => {
-
-    let t = req.headers.token
-    TOKEN.deleteOne({token: t})
-      .exec()
-      .then(result => {
-        req.logout()
-        req.destroy()
-      })
-      .catch(e => {
-        console.log(e)
-      })
-    return res.status(200).send({
-      success: true,
-      message: 'user is logout'
+  router.get('/logout', (req, res, next) => {
+    req.session.destroy(function (err) {
+      if (err) {
+        return next(err)
+      } else {
+        return res.redirect('/')
+      }
     })
   })
 
@@ -96,7 +88,7 @@ module.exports = function (app) {
       // verifies secret and checks exp
       jwt.verify(token, config.secret, function (err, decoded) {
         if (err) {
-          return res.status(400).send({success: false, message: 'Failed to authenticate token.'})
+          return res.status(400).send({ success: false, message: 'Failed to authenticate token.' })
         } else {
           // if everything is good, save to request for use in other routes
           req.decoded = decoded

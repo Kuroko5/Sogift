@@ -24,13 +24,12 @@ exports.paginate = (data, query) => {
 
   data.sort((a, b) => order === 'DESC' ? _getSort(b, a, sort) : _getSort(a, b, sort))
 
-
   if (!query.hasOwnProperty('all')) {
     totalData = data.length
     data = _pageSizing(data, pageSize)
     const toReturn = {
       data: [],
-      pagination: {page: page + 1, pageSize: pageSize, rowCount: totalData, pageCount: data.length}
+      pagination: { page: page + 1, pageSize: pageSize, rowCount: totalData, pageCount: data.length }
     }
     if (page > data.length - 1 && data.length > 0) {
       toReturn.data = data[data.length - 1]
@@ -41,7 +40,7 @@ exports.paginate = (data, query) => {
     return toReturn
   }
 
-  return data.hasOwnProperty('data') ? data : {data: data}
+  return data.hasOwnProperty('data') ? data : { data: data }
 }
 
 /**
@@ -121,6 +120,5 @@ const _containsValue = (obj, research) => {
       }
     }
   }
-
   return false
 }

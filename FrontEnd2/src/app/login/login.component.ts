@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   }
   get formControls() { return this.loginForm.controls; }
 
-  login() {
+  async login() {
     console.log(this.loginForm.value);
     this.isSubmitted = true;
     if (this.loginForm.invalid) {
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     const email = String(this.loginForm.value.email);
     const password = String(this.loginForm.value.password);
     console.log(this.authService);
-    this.authService.login(email, password);
+    await this.authService.login(email, password);
     this.router.navigateByUrl('/articles');
   }
 }

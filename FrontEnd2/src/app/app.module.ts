@@ -27,14 +27,20 @@ import { ArticlesService } from './services/articles.service';
 import { AuthGuard } from './_guard/auth.guard';
 import { HomeComponent } from './pages/home/home.component';
 import { SidenavbarComponent } from './component/sidenavbar/sidenavbar.component';
+import { HeaderComponent } from './component/header/header.component';
+import { CarouselComponent } from './component/carousel/carousel.component';
+import { FooterComponent } from './component/footer/footer.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ArticlesComponent,
-    LoginComponent,
+    CarouselComponent,
+    HeaderComponent,
     HomeComponent,
+    FooterComponent,
+    LoginComponent,
     SidenavbarComponent
   ],
   imports: [

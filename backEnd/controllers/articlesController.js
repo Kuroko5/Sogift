@@ -1,9 +1,10 @@
 // ArticlesController.js
 const ArticleDomain = require('../domain/articles')
+const {paginate} = require('../service/paginate')
 
 // RETURNS ALL THE USERS IN THE DATABASE
 exports.listArticles = function (req, res) {
-  ArticleDomain.all().then(articles => res.status(200).json(articles)).catch(err => res.status(500).send(err));
+  ArticleDomain.all().then(articles => paginate(articles, req.query)).then(articles => res.status(200).json(articles)).catch(err => res.status(500).send(err))
 }
 
 // CREATES A NEW USER
@@ -20,7 +21,7 @@ exports.getArticle = function (req, res) {
 
 // UPdate article by ID
 exports.updateArticle = function (req, res) {
-  ArticleDomain.update(req.params.id, req.body).then(article => res.status(200).json(article)).catch(err => res.status(500).send(err));
+  ArticleDomain.update(req.params.id, req.body).then(article => res.status(200).json(article)).catch(err => res.status(500).send(err))
 }
 
 // Delete by iD

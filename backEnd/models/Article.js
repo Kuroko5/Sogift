@@ -11,6 +11,10 @@ const articlesSchema = new Schema({
     type: Schema.ObjectId,
     ref: 'Users'
   },
+  categories: [{
+    type: Schema.ObjectId,
+    ref: 'Categories'
+  }],
   link: {
     type: String
   },

@@ -16,12 +16,10 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.articlesService
       .getAll()
-      .subscribe((data: Articles[]) => {
-        console.log(data)
-        this.articles = data;
+      .subscribe((r: any) => {
+        this.articles = r.data;
       });
     this.usersService.getAll().subscribe((result: any) => {
-      console.log(result.data)
       this.users = result.data;
     });
   }

@@ -15,10 +15,8 @@ export class ArticlesComponent implements OnInit {
   ngOnInit() {
     this.articlesService
       .getAll()
-      .subscribe((data: Articles[]) => {
-        console.log(data)
-        this.articles = data;
-
+      .subscribe((result: any) => {
+        this.articles = result.data;
     });
   }
 
