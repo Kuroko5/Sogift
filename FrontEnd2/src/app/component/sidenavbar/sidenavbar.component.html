@@ -1,11 +1,25 @@
 <mat-sidenav-container class="side-container">
   <mat-sidenav #sidenav class="sidenav" mode="side" [(opened)]="opened" (opened)="events.push('open!')" (closed)="events.push('close!')">
-    <nav class="navbar navbar-expand-sm bg-light">
+    <nav *ngIf="logged() === false" class="navbar navbar-expand-sm bg-light">
       <div class="container-fluid">
         <ul class="navbar-nav">
           <li class="nav-item">
             <a routerLink="articles" class="nav-link" routerLinkActive="active">
               Articles
+            </a>
+
+
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <nav *ngIf="logged() === true" class="navbar navbar-expand-sm bg-light">
+      <div class="container-fluid">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a routerLink="articles" class="nav-link" routerLinkActive="active">
+              categorie
             </a>
 
 

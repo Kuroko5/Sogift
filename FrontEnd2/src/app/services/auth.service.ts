@@ -22,16 +22,22 @@ export class AuthService {
   }
 
   async login(email: string, password: string) {
-    return this.http.post<any>(`http://localhost:3000/api/login`, { email, password }, ).subscribe((user) => {
-        // login successful if there's a jwt token in the response
-        if (user && user.token) {
-          // store user details and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('currentUser', JSON.stringify(user));
-          localStorage.setItem('token', user.token);
-          this.currentUserSubject.next(user);
-        }
-        return user;
-      });
+    return this.http.post<any>(`http://localhost:3000/api/login`, { email, password }).subscribe((user) => {
+      // login successful if there's a jwt token in the response
+      if (user && user.token) {
+        // store user details and jwt token in local storage to keep user logged in between page refreshes
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        localStorage.setItem('token', user.token);
+        this.currentUserSubject.next(user);
+      }
+      return user;
+    });
+  }
+  isLogged() {
+    if (!localStorage.getItem('token')) {
+      return false;
+    }
+    return true;
   }
 
   logout() {

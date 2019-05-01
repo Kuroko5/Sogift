@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-sidenavbar',
@@ -9,9 +10,12 @@ export class SidenavbarComponent implements OnInit {
   events: string[] = [];
   opened: boolean;
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
+  }
+  logged() {
+    return this.authService.isLogged();
   }
 
 }
