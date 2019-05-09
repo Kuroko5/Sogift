@@ -14,10 +14,15 @@ export class ArticlesComponent implements OnInit {
 
   ngOnInit() {
     this.articlesService
-      .getAll()
+      .getAll(999999999999)
       .subscribe((result: any) => {
         this.articles = result.data;
-    });
+      });
   }
-
+  delete(id) {
+    this.articlesService.delete(id)
+      .subscribe((result) => {
+        location.reload();
+      });
+  }
 }

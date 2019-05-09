@@ -15,10 +15,12 @@ export class AuthService {
 
   public get currentUserValue(): any {
     const user = localStorage.getItem('currentUser');
-    console.log(user);
     this.currentUserSubject = new BehaviorSubject<any>(localStorage.getItem('currentUser'));
     this.currentUser = this.currentUserSubject.asObservable();
     return this.currentUserSubject.value;
+  }
+  getToken() {
+    return localStorage.getItem('token');
   }
 
   async login(email: string, password: string) {

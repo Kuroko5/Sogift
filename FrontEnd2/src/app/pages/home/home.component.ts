@@ -11,11 +11,13 @@ import { UsersService } from '../../services/users.service';
 export class HomeComponent implements OnInit {
   articles: Articles[];
   users: any;
+  items = 6;
+
   constructor(private articlesService: ArticlesService, private usersService: UsersService) { }
 
   ngOnInit() {
     this.articlesService
-      .getAll()
+      .getAll(this.items)
       .subscribe((r: any) => {
         this.articles = r.data;
       });

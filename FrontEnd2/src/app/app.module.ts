@@ -18,6 +18,8 @@ import { AppRoutingModule } from './app-routing.module';
 /** IMPORT COMPONENT  */
 import { AppComponent } from './app.component';
 import { ArticlesComponent } from './articles/articles.component';
+import { ArticlesAddComponent } from './articles/articles-add/articles-add.component';
+import { ArticlesEditComponent } from './articles/articles-edit/articles-edit.component';
 import { LoginComponent } from './login/login.component';
 
 /**
@@ -30,12 +32,16 @@ import { SidenavbarComponent } from './component/sidenavbar/sidenavbar.component
 import { HeaderComponent } from './component/header/header.component';
 import { CarouselComponent } from './component/carousel/carousel.component';
 import { FooterComponent } from './component/footer/footer.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    AdminComponent,
     ArticlesComponent,
+    ArticlesAddComponent,
+    ArticlesEditComponent,
     CarouselComponent,
     HeaderComponent,
     HomeComponent,
