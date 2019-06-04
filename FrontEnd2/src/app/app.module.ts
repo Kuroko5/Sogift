@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material';
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
@@ -57,6 +58,7 @@ import { AdminComponent } from './admin/admin.component';
     HttpClientModule,
     MaterialModule,
     MatNativeDateModule,
+    MatButtonModule,
     ReactiveFormsModule,
     SlimLoadingBarModule
   ],

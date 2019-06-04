@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+
 import Articles from '../models/articles';
 import { ArticlesService } from '../services/articles.service';
+import { isNgTemplate } from '@angular/compiler';
 
 @Component({
   selector: 'app-articles',
@@ -9,14 +11,24 @@ import { ArticlesService } from '../services/articles.service';
 })
 export class ArticlesComponent implements OnInit {
   articles: Articles[];
-
+  displayedColumns: string[] = ['title', 'description'];
+  items = 5;
   constructor(private articlesService: ArticlesService) { }
 
   ngOnInit() {
+    this.all(this.items);
+  }
+
+  itemChange(item: number): void {
+    this.items = item;
+    this.all(this.itemChange);
+  }
+  all(items) {
     this.articlesService
-      .getAll(999999999999)
+      .getAll(items)
       .subscribe((result: any) => {
-        this.articles = result.data;
+        console.log('result of pagination ', result)
+        this.articles = result;
       });
   }
   delete(id) {

@@ -7,6 +7,7 @@
             <a routerLink="admin/articles" class="nav-link" routerLinkActive="active">
               Articles
             </a>
+            <a (click)="logout()"> Deconnexion</a>
 
 
           </li>
@@ -46,8 +47,10 @@
     <div class="block-events">
       <div *ngFor="let e of events">{{e}}</div>
     </div>-->
-
-    <router-outlet></router-outlet>
+    <div class="container-fluid sogift-content">
+      <router-outlet>loading ...</router-outlet>
+    </div>
+    
     <app-footer>loading..</app-footer>
   </mat-sidenav-content>
 </mat-sidenav-container>

@@ -5,15 +5,15 @@
     left: 0;
     right: 0;
     .sidenav{
-        background: #1A9172;
+        background: #FFFFFF;
+        width: 20%;
     }
   }
   
   .block-events {
-    width: 300px;
+    width: 20%;
     height: 200px;
     overflow: auto;
-    background: #1A9172;
     border: 1px solid #555;
   }
 
@@ -24,4 +24,9 @@
     background: white;
     z-index: 999; 
   }
-  
+  .sogift-content{
+    padding-top:2%;
+    background-color: #F9F9F9;
+    display: flex;
+    flex-direction: column;
+  }
