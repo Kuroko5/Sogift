@@ -1,3 +1,11 @@
-body{
-    background-color: #F9F9F9;
+body {
+  background-color: #f9f9f9;
+}
+
+a {
+  pointer-events: auto;
+  .link-sogift {
+    text-decoration: none;
+    color: #14abaa !important;
+  }
 }

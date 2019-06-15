@@ -1,31 +1,48 @@
 <mat-sidenav-container class="side-container">
-  <mat-sidenav #sidenav class="sidenav" mode="side" [(opened)]="opened" (opened)="events.push('open!')" (closed)="events.push('close!')">
+  <mat-sidenav #sidenav class="sidenav" mode="side" [(opened)]="opened" (opened)="events.push('open!')"
+    (closed)="events.push('close!')">
     <nav *ngIf="logged() === true" class="navbar navbar-expand-sm bg-light">
-      <div class="container-fluid">
+      <div class="container">
         <ul class="navbar-nav">
           <li class="nav-item">
             <a routerLink="admin/articles" class="nav-link" routerLinkActive="active">
               Articles
             </a>
             <a (click)="logout()"> Deconnexion</a>
-
-
           </li>
         </ul>
       </div>
     </nav>
 
     <nav *ngIf="logged() === false" class="navbar navbar-expand-sm bg-light">
-      <div class="container-fluid">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a routerLink="articles" class="nav-link" routerLinkActive="active">
-              categorie
-            </a>
-
-
-          </li>
-        </ul>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 link-category">
+            <ul class="navbar-nav" *ngFor="let categorie of categories">
+              <li class="nav-item">
+                <a routerLink="" class="nav-link" routerLinkActive="active">
+                  <i class="fas fa-circle" [style.color]="categorie.color"></i>{{categorie.name}}
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-sm-12 link-page">
+            <ul>
+              <li>
+                <a>Contactez-nous</a>
+              </li>
+              <li>
+                <a>On parle de So Gift</a>
+              </li>
+              <li>
+                <a>Faire de la PUB avec nous</a>
+              </li>
+              <li>
+                <a>Qui sommes-nous?</a>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </nav>
   </mat-sidenav>
@@ -34,23 +51,28 @@
     <div class="header-content">
       <div class="container">
         <div class="row">
-          <div class="col-4"><button mat-button (click)="sidenav.toggle()">sidenav.toggle()</button></div>
+          <div class="col-1">
+            <button mat-button="" (click)="sidenav.toggle()">
+                <span *ngIf="opened === false" style="font-size: 2em; color: #63ABA9;">
+                    <i class="fas fa-bars"></i>
+                  </span>
+                  <span *ngIf="opened === true" style="font-size: 2em; color: #63ABA9;">
+                      <i class="fas fa-times"></i>
+                    </span>
+            </button>
+          </div>
           <!-- <mat-checkbox [(ngModel)]="opened">sidenav.opened</mat-checkbox>-->
-          <div class="col-8">
+          <div class="col-11">
             <app-header>loading</app-header>
           </div>
         </div>
       </div>
 
     </div>
-    <!--<p>Events:</p>
-    <div class="block-events">
-      <div *ngFor="let e of events">{{e}}</div>
-    </div>-->
     <div class="container-fluid sogift-content">
-      <router-outlet>loading ...</router-outlet>
+      <router-outlet></router-outlet>
     </div>
-    
+
     <app-footer>loading..</app-footer>
   </mat-sidenav-content>
 </mat-sidenav-container>

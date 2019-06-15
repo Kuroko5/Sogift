@@ -82,13 +82,18 @@ module.exports = function (app) {
   router.use(function (req, res, next) {
     // check header or url parameters or post parameters for token
     const token = req.body.token || req.query.token || req.headers['x-access-token']
-    console.log('REQUEST METHOD', req.method)
-    if (req.method === 'GET') {
+    const collection = req.headers['collection']
+    const { pathname } = JSON.parse(JSON.stringify(req._parsedUrl))
+    
+    const whiteList = [
+      '/articles',
+      '/categories'
+    ]
+    console.log(pathname)
+    if ( req.method === 'GET') { // whiteList.indexOf(pathname) !== -1 &&
       next()
     } else {
-      console.log('not Get ')
       if (token) {
-        console.log(token)
         // verifies secret and checks exp
         // const decoded3 = jwt.verify(token, config.secret)
         // console.log(decoded3)
@@ -99,7 +104,6 @@ module.exports = function (app) {
           } else {
             // if everything is good, save to request for use in other routes
             req.decoded = decoded
-            console.log(req.decoded)
             next()
           }
         })

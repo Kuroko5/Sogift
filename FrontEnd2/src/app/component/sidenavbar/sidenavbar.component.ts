@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { CategoriesService } from '../../services/categories.service';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-sidenavbar',
@@ -8,11 +9,14 @@ import { Router } from '@angular/router';
 })
 export class SidenavbarComponent implements OnInit {
   events: string[] = [];
-  opened: boolean;
+  opened = false;
+  categories: [];
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private categoriesService: CategoriesService) { }
 
   ngOnInit() {
+    this.allCategories();
+    console.log('opened', this.opened);
   }
 
   logged() {
@@ -24,4 +28,10 @@ export class SidenavbarComponent implements OnInit {
     return this.router.navigateByUrl('/home');
   }
 
+  allCategories() {
+    this.categoriesService.getAll(9999999)
+      .subscribe((result: any) => {
+        this.categories = result;
+      });
+  }
 }

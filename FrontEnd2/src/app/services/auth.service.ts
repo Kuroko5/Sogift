@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from '../interfaces/user';
@@ -9,7 +10,7 @@ export class AuthService {
   private currentUserSubject: BehaviorSubject<any>;
   public currentUser: Observable<any>;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
 
   }
 
@@ -31,8 +32,9 @@ export class AuthService {
         localStorage.setItem('currentUser', JSON.stringify(user));
         localStorage.setItem('token', user.token);
         this.currentUserSubject.next(user);
+        return this.router.navigateByUrl('/admin');
       }
-      return user;
+      return this.router.navigateByUrl('/login');
     });
   }
   isLogged() {

@@ -1,8 +1,8 @@
 const { Strategy } = require('passport-local')
 const passport = require('passport')
 
-const mongoose = require('mongoose'),
-  bcrypt = require('bcryptjs');
+const mongoose = require('mongoose')
+const bcrypt = require('bcryptjs')
 
 const User = mongoose.model('Users')
 
@@ -18,12 +18,11 @@ passport.use('local-login', new Strategy(
         if (!user) {
           return done('User not found', null, '')
         }
-        //bcrypt.compareSync("B4c0/\/", hash); // true
+        // bcrypt.compareSync("B4c0/\/", hash); // true
 
         if (bcrypt.compareSync(password, user.password) === false) {
           return done('Email or password invalid', null, null)
         }
-        console.log(user.toJSON())
         return done(null, user.toJSON(), null)
       })
       .catch(err => {

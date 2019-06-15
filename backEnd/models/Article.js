@@ -13,8 +13,14 @@ const articlesSchema = new Schema({
   },
   categories: [{
     type: Schema.ObjectId,
-    ref: 'Categories'
+    ref: 'Categories',
+    required: true
   }],
+  cover: {
+    type: String,
+    required: true
+  },
+  video: { type: String },
   link: {
     type: String
   },
@@ -33,13 +39,13 @@ const articlesSchema = new Schema({
     type: Date
   }
 }, {
-  toJSON: {
-    virtuals: true
-  },
-  toObject: {
-    virtuals: true
-  }
-})
+    toJSON: {
+      virtuals: true
+    },
+    toObject: {
+      virtuals: true
+    }
+  })
 
 const Articles = mongoose.model('Articles', articlesSchema)
 

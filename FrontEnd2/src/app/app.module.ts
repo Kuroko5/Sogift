@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { MaterialModule } from './material.module';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 /**
  * Immport Modules
@@ -34,6 +35,7 @@ import { HeaderComponent } from './component/header/header.component';
 import { CarouselComponent } from './component/carousel/carousel.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { AdminComponent } from './admin/admin.component';
+import { from } from 'rxjs';
 
 
 @NgModule({
@@ -51,6 +53,7 @@ import { AdminComponent } from './admin/admin.component';
     SidenavbarComponent
   ],
   imports: [
+    AngularFontAwesomeModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
