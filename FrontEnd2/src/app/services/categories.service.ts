@@ -31,6 +31,12 @@ export class CategoriesService {
       .get(`${this.url}/${id}`, { headers: header });
   }
 
+  getByName(name) {
+    const header = new HttpHeaders();
+    return this
+      .http
+      .get(`${this.url}/category/name`, { headers: header });
+  }
   create(object: any) {
     console.log('header', this.headers);
     return this

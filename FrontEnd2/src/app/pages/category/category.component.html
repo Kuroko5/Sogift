@@ -1,0 +1,22 @@
+<app-banniere></app-banniere>
+<section *ngIf="currentCategory" class="container week">
+  <div id="triangle" class="wrapper" [style.background-color]="currentCategory.color">
+    <h1>{{currentCategory.name}}</h1>
+  </div>
+
+
+  <div class="row">
+    <div class="col-12 col-sm-12 col-md-4 " *ngFor="let article of currentCategory.articles">
+      <div class="card">
+        <img class="card-img-top" src="" alt="Card image cap" style="background: grey">
+        <div class="card-body">
+          <h5 class="card-title">{{ article.title }}</h5>
+          <p class="card-text">{{article.subtitle}}</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>

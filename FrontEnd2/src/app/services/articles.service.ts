@@ -31,6 +31,12 @@ export class ArticlesService {
       .http
       .get(`${this.url}/${id}`, { headers: header });
   }
+  getFromCategory(categoryId) {
+    const header = new HttpHeaders();
+    return this
+      .http
+      .get(`${this.url}/category/${categoryId}`, { headers: header });
+  }
 
   create(object: any) {
     console.log('header', this.headers);

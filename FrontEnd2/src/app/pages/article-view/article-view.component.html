@@ -1,0 +1,13 @@
+<section *ngIf="currentArticle" class="content-article">
+  <div class="category-title" *ngFor="let category of currentArticle.categories" [style.background]="category.color">{{category.name}}</div>
+  <div class="detail-article">
+    <h1 [style.color]="colorArticle">{{currentArticle.title}}</h1>
+    <h3>{{currentArticle.subtitle}}</h3>
+    <div class="cover">
+      <img [src]="currentArticle.cover" class="responsive"/>
+    </div>
+    <div class="text-article">
+      <p [innerHtml]="currentArticle.description"></p>
+    </div>
+  </div>
+</section>

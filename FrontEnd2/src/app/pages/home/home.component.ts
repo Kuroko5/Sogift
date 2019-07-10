@@ -16,14 +16,16 @@ export class HomeComponent implements OnInit {
   DEFAULT_NUMBER = 999999;
   categories = [];
   bestCategory = ['food', 'drink', 'song'];
-  articleFood = [];
-  articleDrink = [];
-  articleSong = [];
+  best = [];
+  articleFood: any;
+  articleDrink: any;
+  articleSong: any;
   constructor(private articlesService: ArticlesService, private categoriesService: CategoriesService) { }
 
   ngOnInit() {
     this.getLastArticle();
     this.getAllcategory();
+   // this.getBestCategory();
   }
 
   getLastArticle() {
@@ -35,15 +37,36 @@ export class HomeComponent implements OnInit {
   }
 
   getBestCategory() {
-    this.bestCategory.map((e)=>{
-      this.categoriesService.getOne(e)
-    })
-  }
-  getAllcategory() {
-    this.categoriesService.getAll(this.DEFAULT_NUMBER)
-      .subscribe((r: any) => {
-        this.categories = r;
+    this.bestCategory.map((e) => {
+      this.categoriesService.getByName(e).subscribe((result: any) => {
+        console.log('reesult cates ', result);
+        if (result.name === 'food') {
+          this.articlesService.getFromCategory(result._id).subscribe((r: any) => {
+            this.articleFood.category = result;
+            this.articleFood.articles = r.data;
+          });
+        } else if (result.name === 'song') {
+          this.articlesService.getFromCategory(result._id).subscribe((r: any) => {
+            this.articleSong.category = result;
+            this.articleSong.articles = r.data;
+          });
+        } else if (result.name === 'drink') {
+          this.articlesService.getFromCategory(result._id).subscribe((r: any) => {
+            this.articleDrink.category = result;
+            this.articleDrink.articles = r.data;
+          });
+        }
       });
+    });
   }
 
+  async getAllcategory() {
+    this.categoriesService.getAll(this.DEFAULT_NUMBER)
+      .subscribe(async (result: any) => {
+        await result.map((r) => {
+          this.articlesService.getFromCategory(r._id).subscribe((articles: any) => r.articles = articles.data);
+        });
+        this.categories = result;
+      });
+  }
 }

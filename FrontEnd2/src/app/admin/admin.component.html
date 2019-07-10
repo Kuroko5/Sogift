@@ -15,9 +15,9 @@
               </div>
             </div>
             <div class="col-xs-7">
-              <div class="numbers">
-                <p>Capacity</p>
-                105GB
+              <div *ngIf="article" class="numbers" >
+                <p>Article</p>
+                {{articles}}
               </div>
             </div>
           </div>

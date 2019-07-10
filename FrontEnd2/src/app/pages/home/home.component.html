@@ -3,14 +3,14 @@
   <h1 > Cette Semaine à Lille</h1>
 
   <div class="row">
-    <div class="col col-3 " *ngFor="let article of lastArticles">
+    <div class="col col-sm-2 col-md-4 " *ngFor="let article of lastArticles">
       <div class="card">
-        <img class="card-img-top" src="" alt="Card image cap" style="background: grey">
+          <img class="card-img-top" [src]="article.cover" alt="Card image cap" style="background: grey">        
         <div class="card-body">
           <h5 class="card-title">{{ article.title }}</h5>
           <p class="card-text">{{article.description}}</p>
           <button _ngcontent-c54="" color="accent" mat-button="" class="mat-button mat-accent">
-              <a [routerLink]="['./edit', article._id]" class="mat-button-wrapper">Voir</a>
+              <a [routerLink]="['/article', article._id]" class="mat-button-wrapper">Voir</a>
               <div class="mat-button-ripple mat-ripple" matripple=""></div>
               <div class="mat-button-focus-overlay"></div>
           </button>
@@ -21,17 +21,21 @@
   </div>
 
 </section>
+
+
+
+<!-- Section display all categries with their articles-->
 <section class="container week" *ngFor="let category of categories">
   <h1 [style.background-color]="category.color">{{category.name}}</h1>
 
   <div class="row">
-    <div class="col col-4 " *ngFor="let user of users">
+    <div class="col col-4 " *ngFor="let article of category.articles">
       <div class="card">
-        <img class="card-img-top" src="" alt="Card image cap" style="background: grey">
+        <img class="card-img-top" [src]="article.cover" alt="Card image cap" style="background: grey">
         <div class="card-body">
-          <h5 class="card-title">{{ user.name }}</h5>
-          <p class="card-text">{{user.email}}</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <h5 class="card-title">{{ article.title }}</h5>
+          <p class="card-text">{{article.subtitle}}</p>
+          <a [routerLink]="['/article', article._id]" class="btn btn-primary">see more </a>
         </div>
       </div>
     </div>
@@ -39,3 +43,23 @@
   </div>
 
 </section>
+
+<!-- Section display all categries with their articles-->
+<!-- <section *ngIf="articleFood" class="container week">
+    <h1 [style.background-color]="articleFood.category.name.color">{{articleFood.category.name}}</h1>
+  
+    <div class="row">
+      <div class="col col-4 " *ngFor="let article of articleFood.articles">
+        <div class="card">
+          <img class="card-img-top" src="" alt="Card image cap" style="background: grey">
+          <div class="card-body">
+            <h5 class="card-title">{{ article.title }}</h5>
+            <p class="card-text">{{article.subtitle}}</p>
+            <a [routerLink]="['article', article._id]" class="btn btn-primary">see more </a>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  
+  </section> -->

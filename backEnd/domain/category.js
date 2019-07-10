@@ -1,10 +1,12 @@
 const mongoose = require('mongoose')
-const PATTERN = '^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$'
 const CATEGORY = mongoose.model('Categories')
 
-exports.createS = obj => {
+const PATTERN = '^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$'
+
+exports.create = obj => {
   try {
     obj.color.match(PATTERN)
+    obj.name = obj.name.toLowerCase()
     return CATEGORY.create(obj)
   } catch (e) {
     return e
@@ -23,7 +25,7 @@ exports.all = () => CATEGORY.find().exec()
 
 exports.one = _id => CATEGORY.findOne({ _id }).exec()
 
-exports.byName = name => CATEGORY.find({ name: name.toUpperCase() }).exec()
+exports.byName = obj => CATEGORY.find({ name: obj.name.toLowerCase() }).exec()
 
 function createCategory(category) {
   return new Promise((resolve, reject) => {
@@ -50,6 +52,5 @@ function deleteCategory(category_id) {
         resolve(result)
       })
       .catch(e => reject(e))
-
   })
 }

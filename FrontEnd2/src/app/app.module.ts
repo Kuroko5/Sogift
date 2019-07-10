@@ -17,24 +17,34 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 import { AppRoutingModule } from './app-routing.module';
 
-/** IMPORT COMPONENT  */
+/** IMPORT Admin COMPONENT  */
 import { AppComponent } from './app.component';
 import { ArticlesComponent } from './articles/articles.component';
 import { ArticlesAddComponent } from './articles/articles-add/articles-add.component';
 import { ArticlesEditComponent } from './articles/articles-edit/articles-edit.component';
 import { LoginComponent } from './login/login.component';
-
-/**
- * Import Services
- */
-import { ArticlesService } from './services/articles.service';
-import { AuthGuard } from './_guard/auth.guard';
 import { HomeComponent } from './pages/home/home.component';
 import { SidenavbarComponent } from './component/sidenavbar/sidenavbar.component';
 import { HeaderComponent } from './component/header/header.component';
 import { CarouselComponent } from './component/carousel/carousel.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { AdminComponent } from './admin/admin.component';
+
+import { CategoryComponent } from './pages/category/category.component';
+import { ArticleViewComponent } from './pages/article-view/article-view.component';
+import { SoGiftComponent } from './pages/so-gift/so-gift.component';
+import { WhoAreUsComponent } from './pages/who-are-us/who-are-us.component';
+import { PubComponent } from './pages/pub/pub.component';
+import { ContactComponent } from './pages/contact/contact.component';
+
+
+import { BanniereComponent } from './component/banniere/banniere.component';
+
+/**
+ * Import Services
+ */
+import { ArticlesService } from './services/articles.service';
+import { AuthGuard } from './_guard/auth.guard';
 import { from } from 'rxjs';
 
 
@@ -45,12 +55,19 @@ import { from } from 'rxjs';
     ArticlesComponent,
     ArticlesAddComponent,
     ArticlesEditComponent,
+    ArticleViewComponent,
+    BanniereComponent,
+    CategoryComponent,
     CarouselComponent,
+    ContactComponent,
     HeaderComponent,
     HomeComponent,
     FooterComponent,
     LoginComponent,
-    SidenavbarComponent
+    PubComponent,
+    SoGiftComponent,
+    SidenavbarComponent,
+    WhoAreUsComponent
   ],
   imports: [
     AngularFontAwesomeModule,

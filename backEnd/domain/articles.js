@@ -17,7 +17,7 @@ exports.deleteAll = ids => Promise.all(ids.map(a => deleteArticle(a._id)))
 exports.all = () => ARTICLES.find().populate('categories created_by').exec()
 
 exports.one = _id => ARTICLES.findOne({ _id }).populate('categories created_by').exec()
-exports.allFromCategory = _id => ARTICLES.find({ 'categories': _id }).populate('categories created_by').exec()
+exports.allFromCategory = categoryId => ARTICLES.find({ 'categories': categoryId }).populate('categories created_by').exec()
 
 function deleteArticle(dealId) {
   return new Promise((resolve, reject) => {

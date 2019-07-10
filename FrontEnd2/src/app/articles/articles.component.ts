@@ -10,9 +10,10 @@ import { isNgTemplate } from '@angular/compiler';
   styleUrls: ['./articles.component.scss']
 })
 export class ArticlesComponent implements OnInit {
-  articles: Articles[];
+  articles: any[];
   displayedColumns: string[] = ['title', 'description'];
-  items = 5;
+  pagination:any;
+  items = 9999999999;
   constructor(private articlesService: ArticlesService) { }
 
   ngOnInit() {
@@ -27,8 +28,11 @@ export class ArticlesComponent implements OnInit {
     this.articlesService
       .getAll(items)
       .subscribe((result: any) => {
-        console.log('result of pagination ', result)
-        this.articles = result;
+        if (result) {
+          console.log('result of pagination ', result)
+          this.articles = result.data;
+          this.pagination = result.pagination;
+        }
       });
   }
   delete(id) {

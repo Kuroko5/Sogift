@@ -5,7 +5,7 @@
       <div class="container">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a routerLink="admin/articles" class="nav-link" routerLinkActive="active">
+            <a routerLink="articles" class="nav-link" routerLinkActive="active">
               Articles
             </a>
             <a (click)="logout()"> Deconnexion</a>
@@ -17,11 +17,12 @@
     <nav *ngIf="logged() === false" class="navbar navbar-expand-sm bg-light">
       <div class="container">
         <div class="row">
+          <a routerLink="/">Accueil</a>
           <div class="col-sm-12 link-category">
-            <ul class="navbar-nav" *ngFor="let categorie of categories">
+            <ul class="navbar-nav" *ngFor="let category of categories">
               <li class="nav-item">
-                <a routerLink="" class="nav-link" routerLinkActive="active">
-                  <i class="fas fa-circle" [style.color]="categorie.color"></i>{{categorie.name}}
+                <a [routerLink]="['/category/', category._id]" routerLinkActivate="active" class="nav-link" routerLinkActive="active">
+                  <i class="fas fa-circle" [style.color]="category.color"></i>{{category.name}}
                 </a>
               </li>
             </ul>
@@ -29,16 +30,16 @@
           <div class="col-sm-12 link-page">
             <ul>
               <li>
-                <a>Contactez-nous</a>
+                <a routerLink="contact">Contactez-nous</a>
               </li>
               <li>
-                <a>On parle de So Gift</a>
+                <a routerLink="presse-sogift">On parle de So Gift</a>
               </li>
               <li>
-                <a>Faire de la PUB avec nous</a>
+                <a routerLink="pub">Faire de la PUB avec nous</a>
               </li>
               <li>
-                <a>Qui sommes-nous?</a>
+                <a routerLink="qui-somme-nous">Qui sommes-nous?</a>
               </li>
             </ul>
           </div>
@@ -53,12 +54,12 @@
         <div class="row">
           <div class="col-1">
             <button mat-button="" (click)="sidenav.toggle()">
-                <span *ngIf="opened === false" style="font-size: 2em; color: #63ABA9;">
-                    <i class="fas fa-bars"></i>
-                  </span>
-                  <span *ngIf="opened === true" style="font-size: 2em; color: #63ABA9;">
-                      <i class="fas fa-times"></i>
-                    </span>
+              <span *ngIf="opened === false" style="font-size: 2em; color: #63ABA9;">
+                <i class="fas fa-bars"></i>
+              </span>
+              <span *ngIf="opened === true" style="font-size: 2em; color: darkslategray;">
+                <i class="fas fa-times"></i>
+              </span>
             </button>
           </div>
           <!-- <mat-checkbox [(ngModel)]="opened">sidenav.opened</mat-checkbox>-->

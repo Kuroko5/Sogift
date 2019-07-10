@@ -10,7 +10,7 @@ exports.listCategories = function (req, res) {
 
 // CREATES A NEW USER
 exports.createCategory = function (req, res) {
-  CategoryDomain.createS(req.body).then(category => res.status(200).json(category)).catch(err => {
+  CategoryDomain.create(req.body).then(category => res.status(200).json(category)).catch(err => {
     res.status(500).send(err)
     console.log(err)
   })
@@ -19,7 +19,9 @@ exports.createCategory = function (req, res) {
 exports.getCategory = function (req, res) {
   CategoryDomain.one(req.params.categoryId).then(category => res.status(200).json(category)).catch(err => res.status(500).send(err));
 }
-
+exports.getByName = function (req, res) {
+  CategoryDomain.byName(req.body).then(category => res.status(200).json(category)).catch(err => res.status(500).send(err));
+}
 // UPdate category by ID
 exports.updateCategory = function (req, res) {
   CategoryDomain.update(req.params.categoryId, req.body).then(category => res.status(200).json(category)).catch(err => res.status(500).send(err));

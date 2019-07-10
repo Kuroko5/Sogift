@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 import Articles from '../../models/articles';
 import { ArticlesService } from '../../services/articles.service';
 
@@ -11,16 +11,16 @@ import { ArticlesService } from '../../services/articles.service';
 export class ArticlesAddComponent implements OnInit {
   article: any = {};
 
-  constructor(private articlesService: ArticlesService,private router: Router) { }
+  constructor(private articlesService: ArticlesService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  create(article){
+  create(article) {
     this.articlesService.create(article)
-    .subscribe(c => {
-      console.log('Article Created', c);
-      return this.router.navigateByUrl('/admin/articles');
-    });
+      .subscribe(c => {
+        console.log('Article Created', c);
+        return this.router.navigateByUrl('/admin/articles');
+      });
   }
 }

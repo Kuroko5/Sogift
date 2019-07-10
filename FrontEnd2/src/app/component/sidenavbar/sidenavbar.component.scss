@@ -12,14 +12,21 @@
   }
 }
 nav.navbar.navbar-expand-sm.bg-light {
-  > div.container {
-    i{margin: 0 5px;}
+  height: 100%
+;  > div.container {
+    text-transform: capitalize;
+    i {
+      margin: 0 5px;
+    }
     div.col-sm-12.link-page {
       > ul li {
         list-style: none;
         font-size: smaller;
         font-style: italic;
         color: #14abaa;
+        > a {
+          color: #14abaa;
+        }
       }
     }
     div.col-sm-12.link-category {
@@ -48,7 +55,7 @@ nav.navbar.navbar-expand-sm.bg-light {
   z-index: 998;
 }
 .sogift-content {
-  margin-top: 5%;
+  margin-top: 11%;
   padding: 2% 0;
   background-color: #f9f9f9;
   display: flex;
