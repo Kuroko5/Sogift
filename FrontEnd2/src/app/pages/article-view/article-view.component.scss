@@ -8,16 +8,21 @@ div.category-title {
   width: 45%;
   display: block;
   margin-bottom: 3%;
-  > h1 {
+  > h3 {
   }
 }
 
 div.detail-article {
   text-align: center;
-  > h1 {
+  > div.sectionTitle {
+    margin:2%;
+  >h1 {
   }
-  > h3 {
+  >h3 {
+    font-weight: 100!important;
+
   }
+}
   > div.cover {
     > img.responsive {
       width: 80%;

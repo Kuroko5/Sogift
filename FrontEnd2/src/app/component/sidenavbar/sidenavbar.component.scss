@@ -12,8 +12,9 @@
   }
 }
 nav.navbar.navbar-expand-sm.bg-light {
-  height: 100%
-;  > div.container {
+  height: 100%;
+  cursor: pointer;
+  > div.container {
     text-transform: capitalize;
     i {
       margin: 0 5px;

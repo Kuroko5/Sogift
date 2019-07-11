@@ -1,28 +1,31 @@
 <mat-sidenav-container class="side-container">
   <mat-sidenav #sidenav class="sidenav" mode="side" [(opened)]="opened" (opened)="events.push('open!')"
     (closed)="events.push('close!')">
-    <nav *ngIf="logged() === true" class="navbar navbar-expand-sm bg-light">
-      <div class="container">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a routerLink="articles" class="nav-link" routerLinkActive="active">
-              Articles
-            </a>
-            <a (click)="logout()"> Deconnexion</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
-    <nav *ngIf="logged() === false" class="navbar navbar-expand-sm bg-light">
+    <nav class="navbar navbar-expand-sm bg-light">
       <div class="container">
         <div class="row">
-          <a routerLink="/">Accueil</a>
           <div class="col-sm-12 link-category">
+
+            <ul *ngIf="logged() === true" class="navbar-nav" style="border-bottom: 1px solid grey">
+              <li class="nav-item">
+                <a routerLink="admin" class="nav-link" routerLinkActive="active">
+                  Dashboard
+                </a>
+                <a routerLink="admin/articles" class="nav-link" routerLinkActive="active">
+                  Articles
+                </a>
+                <a (click)="logout()"> Deconnexion</a>
+              </li>
+              <hr>
+            </ul>
+            <a class="nav-link" routerLink="/">Accueil</a>
+
             <ul class="navbar-nav" *ngFor="let category of categories">
               <li class="nav-item">
-                <a [routerLink]="['/category/', category._id]" routerLinkActivate="active" class="nav-link" routerLinkActive="active">
-                  <i class="fas fa-circle" [style.color]="category.color"></i>{{category.name}}
+                <a [routerLink]="['/category/', category._id]" routerLinkActivate="active" class="nav-link"
+                  routerLinkActive="active">
+                  <span [style.color]="category.color"><i *ngIf="category.icon"
+                      [class]="'fas ' + category.icon"></i></span>{{category.name}}
                 </a>
               </li>
             </ul>

@@ -6,7 +6,8 @@ const Schema = mongoose.Schema
 const categorySchema = new Schema({
   name: { type: String, required: true },
   description: { type: String },
-  color: { type: String, required: true }
+  color: { type: String, required: true },
+  icon: { type: String }
 }, {
     toJSON: {
       virtuals: true

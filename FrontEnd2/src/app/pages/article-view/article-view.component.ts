@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { ArticlesService } from 'src/app/services/articles.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-article-view',
@@ -14,7 +15,7 @@ export class ArticleViewComponent implements OnInit, OnDestroy {
   currentId: any;
   navigationSubscription;
   // tslint:disable-next-line:max-line-length
-  constructor(private route: ActivatedRoute, private router: Router, private articlesService: ArticlesService) {
+  constructor(private route: ActivatedRoute, private router: Router, private articlesService: ArticlesService, public sanitizer: DomSanitizer) {
     this.navigationSubscription = this.router.events.subscribe((e: any) => {
       // If it is a NavigationEnd event re-initalise the component
       if (e instanceof NavigationEnd) {
