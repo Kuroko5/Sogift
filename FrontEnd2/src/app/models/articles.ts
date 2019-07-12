@@ -5,4 +5,7 @@ export default class Articles {
     subtitle: string;
     description: string;
     link: string;
+    cover: string;
+    video: string;
+    categories: string;
 }

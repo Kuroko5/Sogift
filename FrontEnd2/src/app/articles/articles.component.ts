@@ -12,8 +12,9 @@ import { isNgTemplate } from '@angular/compiler';
 export class ArticlesComponent implements OnInit {
   articles: any[];
   displayedColumns: string[] = ['title', 'description'];
-  pagination:any;
+  pagination: any;
   items = 9999999999;
+
   constructor(private articlesService: ArticlesService) { }
 
   ngOnInit() {
@@ -29,7 +30,6 @@ export class ArticlesComponent implements OnInit {
       .getAll(items)
       .subscribe((result: any) => {
         if (result) {
-          console.log('result of pagination ', result)
           this.articles = result.data;
           this.pagination = result.pagination;
         }
@@ -38,6 +38,7 @@ export class ArticlesComponent implements OnInit {
   delete(id) {
     this.articlesService.delete(id)
       .subscribe((result) => {
+        alert('l\'article a bien été supprimé');
         location.reload();
       });
   }

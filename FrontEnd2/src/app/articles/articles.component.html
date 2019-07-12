@@ -39,8 +39,9 @@
                                 <div class="mat-button-ripple mat-ripple" matripple=""></div>
                                 <div class="mat-button-focus-overlay"></div>
                             </button>
-                            <button _ngcontent-c54="" color="accent" mat-button="" class="mat-button mat-accent">
-                                <a (click)="delete(article._id)" class="mat-button-wrapper">Delete</a>
+                            
+                            <button _ngcontent-c54="" (click)="delete(article._id)" color="accent" mat-button="" class="mat-button mat-accent">
+                                <span  class="mat-button-wrapper">Delete</span>
                                 <div class="mat-button-ripple mat-ripple" matripple=""></div>
                                 <div class="mat-button-focus-overlay"></div>
                             </button>
@@ -56,7 +57,25 @@
             [pageSizeOptions]="[5, 10, 25, 100]">
         </mat-paginator>
     </div>
-
+    <div class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Modal body text goes here.</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
 
     
 </section>
