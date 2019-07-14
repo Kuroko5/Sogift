@@ -22,6 +22,9 @@ import { AppComponent } from './app.component';
 import { ArticlesComponent } from './articles/articles.component';
 import { ArticlesAddComponent } from './articles/articles-add/articles-add.component';
 import { ArticlesEditComponent } from './articles/articles-edit/articles-edit.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { CategoriesAddComponent } from './categories/categories-add/categories-add.component';
+import { CategoriesEditComponent } from './categories/categories-edit/categories-edit.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SidenavbarComponent } from './component/sidenavbar/sidenavbar.component';
@@ -43,6 +46,7 @@ import { BanniereComponent } from './component/banniere/banniere.component';
 /**
  * Import Services
  */
+import { CategoriesService } from './services/categories.service';
 import { ArticlesService } from './services/articles.service';
 import { AuthGuard } from './_guard/auth.guard';
 import { from } from 'rxjs';
@@ -60,6 +64,9 @@ import { from } from 'rxjs';
     CategoryComponent,
     CarouselComponent,
     ContactComponent,
+    CategoriesAddComponent,
+    CategoriesComponent,
+    CategoriesEditComponent,
     HeaderComponent,
     HomeComponent,
     FooterComponent,
@@ -83,7 +90,7 @@ import { from } from 'rxjs';
     SlimLoadingBarModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-  { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }, ArticlesService, AuthGuard],
+  { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }, ArticlesService, CategoriesService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

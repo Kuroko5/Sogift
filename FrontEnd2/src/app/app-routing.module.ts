@@ -15,6 +15,9 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { PubComponent } from './pages/pub/pub.component';
 import { WhoAreUsComponent } from './pages/who-are-us/who-are-us.component';
 import { SoGiftComponent } from './pages/so-gift/so-gift.component';
+import { CategoriesAddComponent } from './categories/categories-add/categories-add.component';
+import { CategoriesEditComponent } from './categories/categories-edit/categories-edit.component';
+import { CategoriesComponent } from './categories/categories.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -75,6 +78,22 @@ const routes: Routes = [
   {
     path: 'admin/articles/edit/:id',
     component: ArticlesEditComponent,
+    canActivate: [AuthGuard]
+  },
+
+  {
+    path: 'admin/categories',
+    component: CategoriesComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'admin/categories/add',
+    component: CategoriesAddComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'admin/categories/edit/:id',
+    component: CategoriesEditComponent,
     canActivate: [AuthGuard]
   },
 ];
