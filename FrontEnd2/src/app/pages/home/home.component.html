@@ -1,15 +1,19 @@
-<app-carousel>loading</app-carousel>
+<app-carousel>loading...</app-carousel>
 <section class="container week">
-  <h1> Cette Semaine à Lille</h1>
+  <h1 > Cette Semaine à Lille</h1>
 
   <div class="row">
-    <div class="col col-4 " *ngFor="let article of articles">
+    <div class="col col-sm-2 col-md-4 " *ngFor="let article of lastArticles">
       <div class="card">
-        <img class="card-img-top" src="" alt="Card image cap" style="background: grey">
+          <img class="card-img-top" [src]="article.cover" alt="Card image cap" style="background: grey">        
         <div class="card-body">
           <h5 class="card-title">{{ article.title }}</h5>
           <p class="card-text">{{article.description}}</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <button _ngcontent-c54="" color="accent" mat-button="" class="mat-button mat-accent">
+              <a [routerLink]="['/article', article._id]" class="mat-button-wrapper">Voir</a>
+              <div class="mat-button-ripple mat-ripple" matripple=""></div>
+              <div class="mat-button-focus-overlay"></div>
+          </button>
         </div>
       </div>
     </div>
@@ -17,35 +21,25 @@
   </div>
 
 </section>
-<section class="container week">
-  <h1> Musique</h1>
+
+
+
+<!-- Section display all categries with their articles-->
+<section class="container week" *ngFor="let category of categories">
+  <h1 [style.background-color]="category.color"><i *ngIf="category.icon" [class]="'fas ' + category.icon" style="margin:0 1%"> </i>{{category.name}}</h1>
 
   <div class="row">
-    <div class="col col-4 " *ngFor="let user of users">
+    <div class="col col-4 " *ngFor="let article of category.articles">
       <div class="card">
-        <img class="card-img-top" src="" alt="Card image cap" style="background: grey">
-        <div class="card-body">
-          <h5 class="card-title">{{ user.name }}</h5>
-          <p class="card-text">{{user.email}}</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-</section>
-<section class="container week">
-  <h1> Cette Semaine à Lille</h1>
-
-  <div class="row">
-    <div class="col col-4 " *ngFor="let article of articles">
-      <div class="card">
-        <img class="card-img-top" src="" alt="Card image cap" style="background: grey">
+        <img class="card-img-top" [src]="article.cover" alt="Card image cap" style="background: grey">
         <div class="card-body">
           <h5 class="card-title">{{ article.title }}</h5>
-          <p class="card-text">{{article.description}}</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <p class="card-text">{{article.subtitle}}</p>
+          <button _ngcontent-c54="" color="accent" mat-button="" class="mat-button mat-accent">
+              <a [routerLink]="['/article', article._id]" class="mat-button-wrapper">Voir</a>
+              <div class="mat-button-ripple mat-ripple" matripple=""></div>
+              <div class="mat-button-focus-overlay"></div>
+          </button>
         </div>
       </div>
     </div>
@@ -53,21 +47,7 @@
   </div>
 
 </section>
-<section class="container week">
-  <h1> Musique</h1>
 
-  <div class="row">
-    <div class="col col-4 " *ngFor="let user of users">
-      <div class="card">
-        <img class="card-img-top" src="" alt="Card image cap" style="background: grey">
-        <div class="card-body">
-          <h5 class="card-title">{{ user.name }}</h5>
-          <p class="card-text">{{user.email}}</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
+<section class="rs-sogift">
+  
 </section>

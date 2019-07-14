@@ -1,12 +1,21 @@
 const mongoose = require('mongoose')
-
 const CATEGORY = mongoose.model('Categories')
 
-exports.createS = obj => CATEGORY.create(obj)
+const PATTERN = '^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$'
+
+exports.create = obj => {
+  try {
+    obj.color.match(PATTERN)
+    obj.name = obj.name.toLowerCase()
+    return CATEGORY.create(obj)
+  } catch (e) {
+    return e
+  }
+}
 
 exports.createAll = arrS => Promise.all(arrS.map(aS => createCategory(aS)))
 
-exports.update = (_id, content) => CATEGORY.findOneAndUpdate({_id}, content, {new: true}).exec()
+exports.update = (_id, content) => CATEGORY.findOneAndUpdate({ _id }, content, { new: true }).exec()
 
 exports.delete = _id => deleteCategory(_id)//CATEGORY.remove({_id})
 
@@ -14,13 +23,13 @@ exports.deleteAll = ids => Promise.all(ids.map(a => deleteCategory(a._id)))
 
 exports.all = () => CATEGORY.find().exec()
 
-exports.one = _id => CATEGORY.findOne({_id}).exec()
+exports.one = _id => CATEGORY.findOne({ _id }).exec()
 
-exports.byName = name => CATEGORY.find({name: name.toUpperCase()}).exec()
+exports.byName = obj => CATEGORY.find({ name: obj.name.toLowerCase() }).exec()
 
-function createCategory (category) {
+function createCategory(category) {
   return new Promise((resolve, reject) => {
-    CATEGORY.findOne({name: category.category.toUpperCase()})
+    CATEGORY.findOne({ name: category.category.toUpperCase() })
       .exec()
       .then(c => {
         if (!c) {
@@ -36,13 +45,12 @@ function createCategory (category) {
   })
 }
 
-function deleteCategory (category_id) {
+function deleteCategory(category_id) {
   return new Promise((resolve, reject) => {
-   CATEGORY.deleteOne({_id: category_id})
+    CATEGORY.deleteOne({ _id: category_id })
       .then(result => {
         resolve(result)
       })
       .catch(e => reject(e))
-
   })
 }

@@ -4,15 +4,23 @@ const Schema = mongoose.Schema
 
 // create a schema
 const categorySchema = new Schema({
-  name: {type: String, required: true},
-  description: {type: String}
+  name: { type: String, required: true },
+  description: { type: String },
+  color: { type: String, required: true },
+  icon: { type: String }
 }, {
-  toJSON: {
-    virtuals: true
-  },
-  toObject: {
-    virtuals: true
-  }
+    toJSON: {
+      virtuals: true
+    },
+    toObject: {
+      virtuals: true
+    }
+  })
+
+categorySchema.virtual('articles', {
+  ref: 'Articles',
+  localField: '_id',
+  foreignField: 'categories'
 })
 
 const Categories = mongoose.model('Categories', categorySchema)

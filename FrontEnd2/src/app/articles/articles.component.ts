@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+
 import Articles from '../models/articles';
 import { ArticlesService } from '../services/articles.service';
+import { isNgTemplate } from '@angular/compiler';
 
 @Component({
   selector: 'app-articles',
@@ -8,16 +10,36 @@ import { ArticlesService } from '../services/articles.service';
   styleUrls: ['./articles.component.scss']
 })
 export class ArticlesComponent implements OnInit {
-  articles: Articles[];
+  articles: any[];
+  displayedColumns: string[] = ['title', 'description'];
+  pagination: any;
+  items = 9999999999;
 
   constructor(private articlesService: ArticlesService) { }
 
   ngOnInit() {
-    this.articlesService
-      .getAll()
-      .subscribe((result: any) => {
-        this.articles = result.data;
-    });
+    this.all(this.items);
   }
 
+  itemChange(item: number): void {
+    this.items = item;
+    this.all(this.itemChange);
+  }
+  all(items) {
+    this.articlesService
+      .getAll(items)
+      .subscribe((result: any) => {
+        if (result) {
+          this.articles = result.data;
+          this.pagination = result.pagination;
+        }
+      });
+  }
+  delete(id) {
+    this.articlesService.delete(id)
+      .subscribe((result) => {
+        alert('l\'article a bien été supprimé');
+        location.reload();
+      });
+  }
 }

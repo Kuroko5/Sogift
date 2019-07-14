@@ -15,4 +15,7 @@ router.route('/:categoryId')
   .put(category.updateCategory)
   .delete(category.deleteCategory)
 
+router.route('/category/name/')
+  .get(category.getByName)
+
 module.exports = router

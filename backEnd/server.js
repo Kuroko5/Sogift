@@ -13,6 +13,8 @@ const session = require('express-session')
 const cookieSession = require('cookie-session')
 const morgan = require('morgan')
 const { genSaltSync, hashSync } = require('bcryptjs')
+const log4js = require('log4js');
+const logger = log4js.getLogger()
 
 /**
  * Models
@@ -56,6 +58,8 @@ const corsOptions = {
   }
 }
 
+app.use(log4js.connectLogger(logger, { level: log4js.levels.INFO, format: 'format1 :method :url :status' }))
+
 app.use(cors('*')) // corsOptions
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -80,6 +84,7 @@ app.use(function (req, res) {
 
 app.listen(port)
 
-console.log('RESTFUL API server started on: ' + port)
+logger.info('RESTFUL API server started on: ' + port)
 
-module.exports = app
+module.exports = { app, logger }
+

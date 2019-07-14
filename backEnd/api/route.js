@@ -82,13 +82,25 @@ module.exports = function (app) {
   router.use(function (req, res, next) {
     // check header or url parameters or post parameters for token
     const token = req.body.token || req.query.token || req.headers['x-access-token']
-    if (req.method !== 'GET') {
-      // decode token
+    const collection = req.headers['collection']
+    const { pathname } = JSON.parse(JSON.stringify(req._parsedUrl))
+    
+    const whiteList = [
+      '/articles',
+      '/categories'
+    ]
+    console.log(pathname)
+    if ( req.method === 'GET') { // whiteList.indexOf(pathname) !== -1 &&
+      next()
+    } else {
       if (token) {
         // verifies secret and checks exp
+        // const decoded3 = jwt.verify(token, config.secret)
+        // console.log(decoded3)
+
         jwt.verify(token, config.secret, function (err, decoded) {
           if (err) {
-            return res.status(400).send({ success: false, message: 'Failed to authenticate token.' })
+            return res.status(401).send({ success: false, message: 'Failed to authenticate token.' })
           } else {
             // if everything is good, save to request for use in other routes
             req.decoded = decoded
@@ -104,7 +116,6 @@ module.exports = function (app) {
         })
       }
     }
-    next()
   })
 
   router.use('/users', require('./routes/userRoutes'))

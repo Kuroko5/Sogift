@@ -1,0 +1,57 @@
+<section class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/admin']">Dashboard</a></li>
+            <li class="breadcrumb-item " aria-current="page">Articles</li>
+            <li class="breadcrumb-item active" aria-current="page">Add new</li>
+        </ol>
+    </nav>
+  <h1>Add new Article</h1>
+    <div class="card">
+        <div class="card-body">
+          <form (ngSubmit)="create(article)" #f="ngForm" name="form">
+            <div class="form-group">
+              <label class="col-md-4">Title *</label>
+              <input type="text" class="form-control" [(ngModel)]="article.title" name="title" #name="ngModel"
+                placeholder="Title" required="true" />
+            </div>
+            <div class="form-group">
+              <label class="col-md-4">subtitle *</label>
+              <input type="text" class="form-control" [(ngModel)]="article.subtitle" name="subtitle" #name="ngModel"
+                placeholder="Subtitle" required />
+            </div>
+            <div class="form-group">
+              <label class="col-md-4">Category *</label>
+              <select name="category" class="form-control" [(ngModel)]="article.categories" required>
+                <option *ngFor="let c of categories" value="{{c._id}}">{{c.name}}
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="col-md-4">Description *</label>
+              <textarea class="form-control" [(ngModel)]="article.description" name="description" #name="ngModel"
+                placeholder="description" required></textarea>
+            </div>
+      
+            <div class="form-group">
+              <label class="col-md-4">cover *</label>
+              <input type="text" class="form-control" [(ngModel)]="article.cover" name="cover" #name="ngModel"
+                placeholder="cover" required />
+            </div>
+            <div class="form-group">
+              <label class="col-md-4">video</label>
+              <input type="text" class="form-control" [(ngModel)]="article.video" name="video" #name="ngModel"
+                placeholder="video" />
+            </div>
+      
+            <div class="form-group">
+              <label class="col-md-4">link</label>
+              <input type="text" class="form-control" [(ngModel)]="article.link" name="link" #name="ngModel"
+                placeholder="link" />
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+          </form>
+        </div>
+      </div>
+</section>

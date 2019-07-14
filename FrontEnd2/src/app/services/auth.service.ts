@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from '../interfaces/user';
@@ -9,16 +10,18 @@ export class AuthService {
   private currentUserSubject: BehaviorSubject<any>;
   public currentUser: Observable<any>;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
 
   }
 
   public get currentUserValue(): any {
     const user = localStorage.getItem('currentUser');
-    console.log(user);
     this.currentUserSubject = new BehaviorSubject<any>(localStorage.getItem('currentUser'));
     this.currentUser = this.currentUserSubject.asObservable();
     return this.currentUserSubject.value;
+  }
+  getToken() {
+    return localStorage.getItem('token');
   }
 
   async login(email: string, password: string) {
@@ -29,8 +32,9 @@ export class AuthService {
         localStorage.setItem('currentUser', JSON.stringify(user));
         localStorage.setItem('token', user.token);
         this.currentUserSubject.next(user);
+        return this.router.navigateByUrl('/admin');
       }
-      return user;
+      return this.router.navigateByUrl('/login');
     });
   }
   isLogged() {
@@ -45,5 +49,6 @@ export class AuthService {
     localStorage.removeItem('currentUser');
     localStorage.removeItem('token');
     this.currentUserSubject.next(null);
+    return this.isLogged();
   }
 }

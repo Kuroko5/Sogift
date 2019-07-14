@@ -1,5 +1,7 @@
 const { hashSync } = require('bcryptjs')
 
+const log4js = require('log4js');
+const logger = log4js.getLogger()
 // Database Demo
 const cred = 'mongodb://admin:admin@ds149914.mlab.com:49914/sogift'
 
@@ -46,14 +48,8 @@ mongoose.connection.on('connected', () => {
     USER.findOne({ username: users[i].username })
       .exec()
       .then(result => {
-        console.log(result)
-        // console.log(result === null)
         if (result === null) {
-          console.log('dnas le if ')
           users[i].password = hashSync(users[i].password, 12)
-
-          console.log(USER.create(users[i]))
-
           console.log('the seed has been created')
         } else {
           console.log('the seed exist')
