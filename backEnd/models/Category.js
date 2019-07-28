@@ -7,7 +7,7 @@ const categorySchema = new Schema({
   name: { type: String, required: true },
   description: { type: String },
   color: { type: String, required: true },
-  icon: { type: String }
+  icon: { type: String, required: true }
 }, {
     toJSON: {
       virtuals: true

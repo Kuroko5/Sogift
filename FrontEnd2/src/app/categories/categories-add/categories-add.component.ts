@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoriesService } from 'src/app/services/categories.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-categories-add',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoriesAddComponent implements OnInit {
 
-  constructor() { }
+  categories: any = {};
+
+  constructor(private router: Router, private categoriesService: CategoriesService) { }
 
   ngOnInit() {
   }
 
+  create(category) {
+    if (category && category.name && category.description && category.icon && category.color ) {
+      this.categoriesService.create(category)
+        .subscribe(c => {
+          console.log('category Created', c);
+          return this.router.navigateByUrl('/admin/categories');
+        });
+    } else {
+      alert('votre categorie n\'est pas correct, Veuillez verifié les informations saisies');
+    }
+  }
 }

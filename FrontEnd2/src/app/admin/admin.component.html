@@ -15,18 +15,13 @@
               </div>
             </div>
             <div class="col-xs-7">
-              <div *ngIf="article" class="numbers" >
+              <div *ngIf="nbArticles" class="numbers" >
                 <p>Article</p>
-                {{articles}}
+                {{nbArticles}}
               </div>
             </div>
           </div>
-          <div class="footer">
-            <hr>
-            <div class="stats">
-              <i class="ti-reload"></i> Updated now
-            </div>
-          </div>
+          
         </div>
       </div>
     </div>
@@ -41,17 +36,12 @@
             </div>
             <div class="col-xs-7">
               <div class="numbers">
-                <p>Revenue</p>
-                $1,345
+                <p>Categories</p>
+               {{nbCategories}}
               </div>
             </div>
           </div>
-          <div class="footer">
-            <hr>
-            <div class="stats">
-              <i class="ti-calendar"></i> Last day
-            </div>
-          </div>
+          
         </div>
       </div>
     </div>
@@ -66,15 +56,9 @@
             </div>
             <div class="col-xs-7">
               <div class="numbers">
-                <p>Errors</p>
+                <p>View</p>
                 23
               </div>
-            </div>
-          </div>
-          <div class="footer">
-            <hr>
-            <div class="stats">
-              <i class="ti-timer"></i> In the last hour
             </div>
           </div>
         </div>
@@ -91,19 +75,33 @@
             </div>
             <div class="col-xs-7">
               <div class="numbers">
-                <p>Followers</p>
+                <p>Partenaire</p>
                 +45
               </div>
             </div>
           </div>
-          <div class="footer">
-            <hr>
-            <div class="stats">
-              <i class="ti-reload"></i> Updated now
-            </div>
-          </div>
+          
         </div>
       </div>
     </div>
   </div>
+</section>
+<section class="container">
+  <div class="col col-sm-4">
+    <h5>list of user</h5>
+    <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Cras justo odio
+          <span class="badge badge-primary badge-pill">14</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Dapibus ac facilisis in
+          <span class="badge badge-primary badge-pill">2</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Morbi leo risus
+          <span class="badge badge-primary badge-pill">1</span>
+        </li>
+      </ul>
+    </div>
 </section>

@@ -26,3 +26,18 @@
     margin: 2% auto;
   }
 }
+section.rs-sogift {
+  background-image: url("../../../assets/bg_rs.png");
+
+  /* Set a specific height */
+  height: 200px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  > img.icon-rs {
+    display: block;
+  }
+}

@@ -8,14 +8,24 @@ import { CategoriesService } from '../services/categories.service';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
-  articles;
+  nbArticles;
+  nbCategories;
   constructor(private articlesService: ArticlesService, private categoriesService: CategoriesService) { }
 
   ngOnInit() {
+    this.countAllData()
+  }
+  countAllData() {
     this.articlesService.getAll(999999999).subscribe((result: any) => {
       console.log(result)
       if (result) {
-        this.articles = result.data.length();
+        this.nbArticles = result.data.length;
+      }
+    });
+    this.categoriesService.getAll(999999999).subscribe((result: any) => {
+      console.log(result)
+      if (result) {
+        this.nbCategories = result.length;
       }
     });
   }
