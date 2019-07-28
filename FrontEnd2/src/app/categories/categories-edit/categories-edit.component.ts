@@ -10,13 +10,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class CategoriesEditComponent implements OnInit {
   category: any;
   categories: any;
-  constructor(private router: Router,
-    private route: ActivatedRoute, private categoriesService: CategoriesService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private categoriesService: CategoriesService) { }
 
   ngOnInit() {
+    // tslint:disable-next-line:no-string-literal
     if (Object.keys(this.route.params['value']).length > 0) {
       this.route.params
         .subscribe(params => {
+          // tslint:disable-next-line:no-string-literal
           this.categoriesService.getOne(params['id'])
             .subscribe((result: any) => {
               if (result) {
