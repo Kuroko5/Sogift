@@ -1,18 +1,18 @@
 <app-carousel>loading...</app-carousel>
 <section class="container week">
-  <h1 > Cette Semaine à Lille</h1>
+  <h1> Cette Semaine à Lille</h1>
 
   <div class="row">
     <div class="col col-sm-2 col-md-4 " *ngFor="let article of lastArticles">
       <div class="card">
-          <img class="card-img-top" [src]="article.cover" alt="Card image cap" style="background: grey">        
+        <img class="card-img-top" [src]="article.cover" alt="Card image cap" style="background: grey">
         <div class="card-body">
           <h5 class="card-title">{{ article.title }}</h5>
-          <p class="card-text">{{article.description}}</p>
+          <p class="card-text"><sup>{{article.description | slice:0:100}} ...</sup></p>
           <button _ngcontent-c54="" color="accent" mat-button="" class="mat-button mat-accent">
-              <a [routerLink]="['/article', article._id]" class="mat-button-wrapper">Voir</a>
-              <div class="mat-button-ripple mat-ripple" matripple=""></div>
-              <div class="mat-button-focus-overlay"></div>
+            <a [routerLink]="['/article', article._id]" class="mat-button-wrapper">Voir</a>
+            <div class="mat-button-ripple mat-ripple" matripple=""></div>
+            <div class="mat-button-focus-overlay"></div>
           </button>
         </div>
       </div>
@@ -26,7 +26,8 @@
 
 <!-- Section display all categries with their articles-->
 <section class="container week" *ngFor="let category of categories">
-  <h1 [style.background-color]="category.color"><i *ngIf="category.icon" [class]="'fas ' + category.icon" style="margin:0 1%"> </i>{{category.name}}</h1>
+  <h1 [style.background-color]="category.color"><i *ngIf="category.icon" [class]="'fas ' + category.icon"
+      style="margin:0 1%"> </i>{{category.name}}</h1>
 
   <div class="row">
     <div class="col col-4 " *ngFor="let article of category.articles">
@@ -34,11 +35,11 @@
         <img class="card-img-top" [src]="article.cover" alt="Card image cap" style="background: grey">
         <div class="card-body">
           <h5 class="card-title">{{ article.title }}</h5>
-          <p class="card-text">{{article.subtitle}}</p>
+          <p class="card-text"><sup>{{article.description | slice:0:100}} ...</sup></p>
           <button _ngcontent-c54="" color="accent" mat-button="" class="mat-button mat-accent">
-              <a [routerLink]="['/article', article._id]" class="mat-button-wrapper">Voir</a>
-              <div class="mat-button-ripple mat-ripple" matripple=""></div>
-              <div class="mat-button-focus-overlay"></div>
+            <a [routerLink]="['/article', article._id]" class="mat-button-wrapper">Voir</a>
+            <div class="mat-button-ripple mat-ripple" matripple=""></div>
+            <div class="mat-button-focus-overlay"></div>
           </button>
         </div>
       </div>
@@ -48,6 +49,25 @@
 
 </section>
 
-<section class="rs-sogift">
-  
+<section class="rs-sogift ">
+  <div class="container ">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-4">
+        <a href="https://www.facebook.com/LilleAddict/"><img style="display: block" class="icon-rs img-fluid img-thumbnail"
+            src="../../../assets/facebook_icon.png" /></a>
+        <span class="mx-auto">9K Likes</span>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-4">
+        <a href="https://www.facebook.com/LilleAddict/"><img style="display: block" class="icon-rs img-fluid img-thumbnail"
+            src="../../../assets/instagram_icon.png" /></a>
+        <span class="mx-auto">4K followers</span>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-4">
+        <a href="https://www.facebook.com/LilleAddict/"><img style="display: block" class="icon-rs img-fluid img-thumbnail"
+            src="../../../assets/linkedin_icon.png" /></a>
+        <span class="mx-auto">9K Likes</span>
+      </div>
+    </div>
+  </div>
+
 </section>

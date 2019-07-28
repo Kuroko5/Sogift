@@ -10,7 +10,7 @@ import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { MaterialModule } from './material.module';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-
+import { MatCarouselModule } from '@ngmodule/material-carousel';
 /**
  * Immport Modules
  */
@@ -81,6 +81,7 @@ import { from } from 'rxjs';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    MatCarouselModule,
     FormsModule,
     HttpClientModule,
     MaterialModule,

@@ -7,9 +7,9 @@
         </ol>
     </nav>
     <h1>Edit</h1>
-      <div class="card">
+      <div *ngIf="article" class="card">
           <div class="card-body">
-            <form (ngSubmit)="create(article)" #f="ngForm" name="form">
+            <form (ngSubmit)="edit(article)" #f="ngForm" name="form">
               <div class="form-group">
                 <label class="col-md-4">Title *</label>
                 <input type="text" class="form-control" [(ngModel)]="article.title" name="title" #name="ngModel"

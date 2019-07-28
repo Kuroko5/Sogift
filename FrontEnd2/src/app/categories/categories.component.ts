@@ -7,9 +7,11 @@ import { CategoriesService } from '../services/categories.service';
   styleUrls: ['./categories.component.scss']
 })
 export class CategoriesComponent implements OnInit {
-  categories: any = [];
+  categories: any;
   pagination: any;
   items = 9999999999;
+
+  displayedColumns: string[] = ['name', 'description', 'color', 'icon'];
 
   constructor(private categoriesService: CategoriesService) { }
 
@@ -25,8 +27,10 @@ export class CategoriesComponent implements OnInit {
     this.categoriesService
       .getAll(items)
       .subscribe((result: any) => {
+        console.log('CAtegories ', result)
         if (result) {
-          this.categories = result.data;
+          this.categories = result;
+          console.log(this.categories)
           this.pagination = result.pagination;
         }
       });

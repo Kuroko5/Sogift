@@ -24,10 +24,10 @@
                     </tr>
                 </thead>
 
-                <tbody *ngIf="articles">
+                <tbody>
                     <tr *ngFor="let article of articles">
                         <td>{{ article.title }}</td>
-                        <td>{{ article.description }}</td>
+                        <td>{{ article.description | slice:0:100 }}...</td>
                         <td>
                             <button _ngcontent-c54="" color="accent" mat-button="" class="mat-button mat-accent">
                                 <a [routerLink]="['/article', article._id]" class="mat-button-wrapper">View</a>
