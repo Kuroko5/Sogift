@@ -1,0 +1,31 @@
+<section *ngIf="currentArticle" class="content-article">
+  <div class="category-title" *ngFor="let category of currentArticle.categories" [style.background]="category.color">
+    <i *ngIf="category.icon" [class]="'fas ' + category.icon" style="margin:0 1%"> </i>{{category.name}}</div>
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+        <li class="breadcrumb-item"><a
+            [routerLink]="['/category/', currentArticle.categories[0]._id]">{{currentArticle.categories[0].name}}</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">Articles</li>
+      </ol>
+    </nav>
+    <div class="detail-article">
+      <div class="sectionTitle" [style.border-bottom]="'1px solid '+ colorArticle">
+        <h1 [style.color]="colorArticle">{{currentArticle.title}}</h1>
+        <h3>{{currentArticle.subtitle}}</h3>
+      </div>
+      <div class="cover" *ngIf="!currentArticle.video">
+        <img [src]="currentArticle.cover" class="responsive" />
+      </div>
+      <div class="cover" *ngIf="currentArticle.video">
+        <iframe width="560" height="315" [src]="sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/'+currentArticle.video)" frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="text-article">
+        <p [innerHtml]="currentArticle.description"></p>
+      </div>
+    </div>
+  </div>
+</section>

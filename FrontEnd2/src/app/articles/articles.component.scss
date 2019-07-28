@@ -1,0 +1,31 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.card {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    box-shadow: 0 0 13px 0 rgba(82,63,105,.05);
+    background-color: #fff;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+.card .card-header {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    position: relative;
+    padding: 0 25px;
+    border-bottom: 1px solid #ebedf2;
+    min-height: 60px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    transition: left .3s,right .3s,height .3s;
+    transition: height .3s;
+}
+
+.card .card-body {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    border-radius: 4px;
+}

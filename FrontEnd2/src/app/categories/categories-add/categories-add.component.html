@@ -1,0 +1,41 @@
+<section class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a [routerLink]="['/admin']">Dashboard</a></li>
+        <li class="breadcrumb-item " aria-current="page"><a [routerLink]="['/admin/categories']">Categories</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Add category</li>
+      </ol>
+    </nav>
+    <h1>Edit</h1>
+    <div class="card">
+      <div class="card-body">
+        <form (ngSubmit)="create(category)" #f="ngForm" name="form">
+          <div class="form-group">
+            <label class="col-md-4">Name *</label>
+            <input type="text" class="form-control" [(ngModel)]="category.name" name="title" #name="ngModel"
+              placeholder="Title" required="true" />
+          </div>
+  
+          <div class="form-group">
+            <label class="col-md-4">Description *</label>
+            <textarea class="form-control" [(ngModel)]="category.description" name="description" #name="ngModel"
+              placeholder="description" required></textarea>
+          </div>
+  
+          <div class="form-group">
+            <label class="col-md-4">Color *</label>
+            <input type="text" class="form-control" [(ngModel)]="category.colo" name="cover" #name="ngModel"
+              placeholder="cover" required />
+          </div>
+          <div class="form-group">
+            <label class="col-md-4">icon *</label>
+            <input type="text" class="form-control" [(ngModel)]="category.icon" name="cover" #name="ngModel"
+              placeholder="cover" required />
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Add</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>

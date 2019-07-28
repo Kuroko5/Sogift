@@ -1,0 +1,60 @@
+<section class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/admin']">Dashboard</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Categories</li>
+        </ol>
+    </nav>
+
+    <div class="card">
+        <div class="card-header">
+            <button _ngcontent-uoo-c19="" color="primary" mat-stroked-button="" class="mat-stroked-button mat-primary">
+                <a class="mat-button-wrapper" [routerLink]="['./add']">Add</a>
+                <div class="mat-button-ripple mat-ripple" matripple=""></div>
+                <div class="mat-button-focus-overlay"></div>
+            </button>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr class="center">
+                        <td>name</td>
+                        <td>description </td>
+                        <td>icon </td>
+                        <td>color </td>
+                        <td colspan="2">Actions</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let category of categories">
+                        <td>{{ category.name }}</td>
+                        <td>{{ category.description }}</td>
+                        <td>{{ category.icon }}</td>
+                        <td>{{ category.color }}</td>
+                        <td>
+                            <button _ngcontent-c54="" color="accent" mat-button="" class="mat-button mat-accent">
+                                <a [routerLink]="['/category', category._id]" class="mat-button-wrapper">View</a>
+                                <div class="mat-button-ripple mat-ripple" matripple=""></div>
+                                <div class="mat-button-focus-overlay"></div>
+                            </button>
+                            <button _ngcontent-c54="" color="accent" mat-button="" class="mat-button mat-accent">
+                                <a [routerLink]="['./edit', category._id]" class="mat-button-wrapper">Edit</a>
+                                <div class="mat-button-ripple mat-ripple" matripple=""></div>
+                                <div class="mat-button-focus-overlay"></div>
+                            </button>
+
+                            <button _ngcontent-c54="" (click)="delete(category._id)" color="accent" mat-button=""
+                                class="mat-button mat-accent">
+                                <span class="mat-button-wrapper">Delete</span>
+                                <div class="mat-button-ripple mat-ripple" matripple=""></div>
+                                <div class="mat-button-focus-overlay"></div>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</section>

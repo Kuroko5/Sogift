@@ -1,0 +1,84 @@
+<mat-sidenav-container class="side-container">
+  <mat-sidenav #sidenav class="sidenav" mode="side" [(opened)]="opened" (opened)="events.push('open!')"
+    (closed)="events.push('close!')">
+    <nav class="navbar navbar-expand-sm bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 link-category">
+
+            <ul *ngIf="logged() === true" class="navbar-nav" style="border-bottom: 1px solid grey">
+              <li class="nav-item">
+                <a routerLink="admin" class="nav-link" routerLinkActive="active">
+                  Dashboard
+                </a>
+                <a routerLink="admin/articles" class="nav-link" routerLinkActive="active">
+                  Articles
+                </a><a routerLink="admin/categories" class="nav-link" routerLinkActive="active">
+                  Categories
+                </a>
+                <a (click)="logout()"> Deconnexion</a>
+              </li>
+              <hr>
+            </ul>
+            <a class="nav-link" routerLink="/">Accueil</a>
+
+            <ul class="navbar-nav" *ngFor="let category of categories">
+              <li class="nav-item">
+                <a [routerLink]="['/category/', category._id]" routerLinkActivate="active" class="nav-link"
+                  routerLinkActive="active">
+                  <span [style.color]="category.color"><i *ngIf="category.icon"
+                      [class]="'fas ' + category.icon"></i></span>{{category.name}}
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-sm-12 link-page">
+            <ul>
+              <li>
+                <a routerLink="contact">Contactez-nous</a>
+              </li>
+              <li>
+                <a routerLink="presse-sogift">On parle de So Gift</a>
+              </li>
+              <li>
+                <a routerLink="pub">Faire de la PUB avec nous</a>
+              </li>
+              <li>
+                <a routerLink="qui-somme-nous">Qui sommes-nous?</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="header-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-1">
+            <button mat-button="" (click)="sidenav.toggle()">
+              <span *ngIf="opened === false" style="font-size: 2em; color: #63ABA9;">
+                <i class="fas fa-bars"></i>
+              </span>
+              <span *ngIf="opened === true" style="font-size: 2em; color: darkslategray;">
+                <i class="fas fa-times"></i>
+              </span>
+            </button>
+          </div>
+          <!-- <mat-checkbox [(ngModel)]="opened">sidenav.opened</mat-checkbox>-->
+          <div class="col-11">
+            <app-header>loading</app-header>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="container-fluid sogift-content">
+      <router-outlet></router-outlet>
+    </div>
+
+    <app-footer>loading..</app-footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>

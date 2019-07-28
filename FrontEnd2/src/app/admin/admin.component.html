@@ -1,0 +1,107 @@
+
+<section class="container">
+
+  DASHBOARD OF ADMIN
+
+  <a routerLink="./articles"> List of Article </a>
+  <div class="row">
+    <div class="col-lg-3 col-sm-6">
+      <div class="card">
+        <div class="content">
+          <div class="row">
+            <div class="col-xs-5">
+              <div class="icon-big icon-warning text-center">
+                <i class="ti-server"></i>
+              </div>
+            </div>
+            <div class="col-xs-7">
+              <div *ngIf="nbArticles" class="numbers" >
+                <p>Article</p>
+                {{nbArticles}}
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+      <div class="card">
+        <div class="content">
+          <div class="row">
+            <div class="col-xs-5">
+              <div class="icon-big icon-success text-center">
+                <i class="ti-wallet"></i>
+              </div>
+            </div>
+            <div class="col-xs-7">
+              <div class="numbers">
+                <p>Categories</p>
+               {{nbCategories}}
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+      <div class="card">
+        <div class="content">
+          <div class="row">
+            <div class="col-xs-5">
+              <div class="icon-big icon-danger text-center">
+                <i class="ti-pulse"></i>
+              </div>
+            </div>
+            <div class="col-xs-7">
+              <div class="numbers">
+                <p>View</p>
+                23
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+      <div class="card">
+        <div class="content">
+          <div class="row">
+            <div class="col-xs-5">
+              <div class="icon-big icon-info text-center">
+                <i class="ti-twitter-alt"></i>
+              </div>
+            </div>
+            <div class="col-xs-7">
+              <div class="numbers">
+                <p>Partenaire</p>
+                +45
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="container">
+  <div class="col col-sm-4">
+    <h5>list of user</h5>
+    <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Cras justo odio
+          <span class="badge badge-primary badge-pill">14</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Dapibus ac facilisis in
+          <span class="badge badge-primary badge-pill">2</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Morbi leo risus
+          <span class="badge badge-primary badge-pill">1</span>
+        </li>
+      </ul>
+    </div>
+</section>
