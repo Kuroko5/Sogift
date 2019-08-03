@@ -1,107 +1,77 @@
-
 <section class="container">
 
-  DASHBOARD OF ADMIN
+  <h1>DASHBOARD</h1>
 
-  <a routerLink="./articles"> List of Article </a>
   <div class="row">
     <div class="col-lg-3 col-sm-6">
-      <div class="card">
-        <div class="content">
-          <div class="row">
-            <div class="col-xs-5">
-              <div class="icon-big icon-warning text-center">
-                <i class="ti-server"></i>
-              </div>
-            </div>
-            <div class="col-xs-7">
-              <div *ngIf="nbArticles" class="numbers" >
-                <p>Article</p>
-                {{nbArticles}}
-              </div>
+        <div class="card border-primary mb-3" style="max-width: 18rem;">
+            <div class="card-header">Articles</div>
+            <div class="card-body text-primary" *ngIf="nbArticles" >
+              <h5 class="card-title">{{nbArticles}}</h5>
             </div>
           </div>
-          
-        </div>
-      </div>
     </div>
+    
     <div class="col-lg-3 col-sm-6">
-      <div class="card">
-        <div class="content">
-          <div class="row">
-            <div class="col-xs-5">
-              <div class="icon-big icon-success text-center">
-                <i class="ti-wallet"></i>
-              </div>
-            </div>
-            <div class="col-xs-7">
-              <div class="numbers">
-                <p>Categories</p>
-               {{nbCategories}}
-              </div>
+        <div class="card border-warning mb-3" style="max-width: 18rem;">
+            <div class="card-header">Categories</div>
+            <div class="card-body text-warning" *ngIf="nbCategories" >
+              <h5 class="card-title">{{nbCategories}}</h5>
             </div>
           </div>
-          
-        </div>
-      </div>
     </div>
+
     <div class="col-lg-3 col-sm-6">
-      <div class="card">
-        <div class="content">
-          <div class="row">
-            <div class="col-xs-5">
-              <div class="icon-big icon-danger text-center">
-                <i class="ti-pulse"></i>
-              </div>
-            </div>
-            <div class="col-xs-7">
-              <div class="numbers">
-                <p>View</p>
-                23
-              </div>
+        <div class="card border-success mb-3" style="max-width: 18rem;">
+            <div class="card-header">View</div>
+            <div class="card-body text-success" >
+              <h5 class="card-title">5 000</h5>
             </div>
           </div>
-        </div>
-      </div>
     </div>
+
     <div class="col-lg-3 col-sm-6">
-      <div class="card">
-        <div class="content">
-          <div class="row">
-            <div class="col-xs-5">
-              <div class="icon-big icon-info text-center">
-                <i class="ti-twitter-alt"></i>
-              </div>
-            </div>
-            <div class="col-xs-7">
-              <div class="numbers">
-                <p>Partenaire</p>
-                +45
-              </div>
+        <div class="card border-info mb-3" style="max-width: 18rem;">
+            <div class="card-header">Partenaires</div>
+            <div class="card-body text-info">
+              <h5 class="card-title">+45</h5>
             </div>
           </div>
-          
-        </div>
-      </div>
     </div>
   </div>
 </section>
 <section class="container">
-  <div class="col col-sm-4">
+  <div class="row">
+    <div class="col-md-4 col-sm-4">
+    <h5>link Admin</h5>
+    <ul class="list-group">
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <a routerLink="./articles"> List of Article </a>
+        <span class="badge badge-primary badge-pill" *ngIf="nbArticles">{{nbArticles}}</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <a routerLink="./categories"> List of Categories </a>
+        <span class="badge badge-primary badge-pill" *ngIf="nbCategories">{{nbCategories}}</span>
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-4 col-sm-4">
     <h5>list of user</h5>
     <ul class="list-group">
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          Cras justo odio
-          <span class="badge badge-primary badge-pill">14</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          Dapibus ac facilisis in
-          <span class="badge badge-primary badge-pill">2</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          Morbi leo risus
-          <span class="badge badge-primary badge-pill">1</span>
-        </li>
-      </ul>
-    </div>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Cras justo odio
+        <span class="badge badge-primary badge-pill">14</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Dapibus ac facilisis in
+        <span class="badge badge-primary badge-pill">2</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Morbi leo risus
+        <span class="badge badge-primary badge-pill">1</span>
+      </li>
+    </ul>
+  </div>
+  </div>
+  
 </section>
